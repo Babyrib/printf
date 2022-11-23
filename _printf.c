@@ -1,6 +1,6 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
+void prt_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - Printf function
@@ -25,13 +25,13 @@ int _printf(const char *format, ...)
 		{
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
+				prt_buffer(buffer, &buff_ind);
 			/* write(1, &format[i], 1);*/
 			printed_chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff_ind);
+			prt_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &i);
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
-	print_buffer(buffer, &buff_ind);
+	prt_buffer(buffer, &buff_ind);
 
 	va_end(list);
 
@@ -53,11 +53,11 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Display temp output
+ * prt_buffer - Display temp output
  * @buffer: char array
  * @buff_ind: size of array points to current input.
  */
-void print_buffer(char buffer[], int *buff_ind)
+void prt_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
 		write(1, &buffer[0], *buff_ind);
