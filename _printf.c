@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _printf - print chars
- * @format: string format
+ * _printf - prints anything
+ * @format: the format string
  *
- * Return: # of chars printed
+ * Return: number of bytes printed
  */
 int _printf(const char *format, ...)
 {
@@ -29,9 +29,9 @@ int _printf(const char *format, ...)
 		}
 		start = p;
 		p++;
-		while (get_flag(p, &params))
+		while (get_flag(p, &params)) /* while char at p is flag char */
 		{
-			p++; 
+			p++; /* next char */
 		}
 		p = get_width(p, &params, ap);
 		p = get_precision(p, &params, ap);
